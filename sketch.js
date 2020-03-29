@@ -7,7 +7,7 @@ let path=[];
 let found=false;
 
 function setup() {
-  createCanvas(1000, 700);
+  createCanvas(displayWidth, displayHeight);
   cols=floor(width/size);
   rows=floor(height/size);
   background(51);
