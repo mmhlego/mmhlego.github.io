@@ -1,30 +1,31 @@
+let grid = [];
+let cells=[];
+let size=20;
+let cols;
+let rows;
+let path=[];
+let found=false;
+
 function setup() {
-  createCanvas(600, 500);
-  slider=createSlider(0,PI,PI/2,PI/16);
-}
+  createCanvas(1000, 700);
+  cols=floor(width/size);
+  rows=floor(height/size);
+  background(51);
 
-function draw() {
-  background(50);
-  translate(width/2,height);
-  frac_tree();
-}
+  frameRate(300);
 
-function frac_tree(n=10,length=200){
-  if(n==0){
-    return;
+  for(i=0;i<cols;i++){
+    grid[i]=[];
+    for(j=0;j<rows;j++){
+      grid[i][j]=new Cell(i,j);
+    }
   }
-  stroke(255);
-  line(0,0,0,-length)
-  translate(0,-length);
-  push();
-  rotate(slider.value());
-  frac_tree(n-1,length*2/3);
-  pop();
-  push();
-  rotate(-slider.value());
-  frac_tree(n-1,length*2/3);
-  pop();
-}
+
+  for(i=0;i<cols;i++){
+    for(j=0;j<rows;j++){
+      grid[i][j].drawwalls();
+    }
+  }
 
   cells.push(grid[0][0]);
   grid[0][0].visited=true;
